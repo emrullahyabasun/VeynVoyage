@@ -2,10 +2,21 @@
 
 namespace VeynVoyage.Areas.User.Controllers
 {
+    [Area("User")]
     public class HomeController : Controller
     {
-        [Area("User")]
+        
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
         {
             return View();
         }

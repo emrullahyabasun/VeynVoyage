@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using VeynVoyage.Data;
+using VeynVoyage.Services.Implementations;
+using VeynVoyage.Services.Interfaces;
 
 namespace VeynVoyage
 {
@@ -19,6 +21,10 @@ namespace VeynVoyage
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
+
+
+         // kendi servislerim
+                builder.Services.AddScoped<IRoomService, RoomService>();
 
             var app = builder.Build();
 
