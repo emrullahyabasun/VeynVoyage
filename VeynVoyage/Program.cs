@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using VeynVoyage.Data;
 using VeynVoyage.Services.Implementations;
@@ -16,7 +17,8 @@ namespace VeynVoyage
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
-            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+              
 
 
 
@@ -30,10 +32,10 @@ namespace VeynVoyage
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
 
+			builder.Services.AddSingleton<IEmailSender, DummyEmailSender>();
 
-
-            // kendi servislerim
-            builder.Services.AddScoped<IRoomService, RoomService>();
+			// kendi servislerim
+			builder.Services.AddScoped<IRoomService, RoomService>();
 
             var app = builder.Build();
 

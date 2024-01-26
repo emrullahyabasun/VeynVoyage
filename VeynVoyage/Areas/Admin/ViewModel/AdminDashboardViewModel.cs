@@ -7,5 +7,7 @@ namespace VeynVoyage.Areas.Admin.ViewModel
     {
         public IEnumerable<IdentityUser> Users { get; set; }
         public IEnumerable<IdentityRole> Roles { get; set; }
-    }
+
+		public IEnumerable<UserRolesViewModel> UsersWithRoles { get; set; }
+	}
 }

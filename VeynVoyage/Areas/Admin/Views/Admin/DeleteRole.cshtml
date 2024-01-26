@@ -1,0 +1,17 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using VeynVoyage.Areas.Admin.ViewModel;
+
+
+
+@model DeleteRoleViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Rol Sil</h2>
+    <p class="alert alert-warning">Bu rolü silmek üzeresiniz: @Model.RoleName. Bu işlem geri alınamaz.</p>
+    <form asp-action="DeleteRole" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Sil</button>
+    </form>

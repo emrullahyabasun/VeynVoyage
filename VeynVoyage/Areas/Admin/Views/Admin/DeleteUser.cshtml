@@ -1,0 +1,46 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using VeynVoyage.Areas.Admin.ViewModel;
+
+
+@model DeleteUserViewModel
+@{
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-5">
+	<h2 class="mb-4">Kullanıcıyı Sil</h2>
+	<div class="alert alert-warning" role="alert">
+		<h4 class="alert-heading">Uyarı!</h4>
+		<p>Bu kullanıcıyı silmek üzeresiniz. Bu işlem geri alınamaz.</p>
+		<hr>
+		<p class="mb-0">Eğer eminseniz, silme işlemini onaylayın.</p>
+	</div>
+
+	<div class="card">
+		<div class="card-header">
+			Kullanıcı: @Model.Email
+		</div>
+		<div class="card-body">
+			<form asp-action="DeleteUser" method="post">
+				<input type="hidden" asp-for="Id" />
+				<button type="submit" class="btn btn-danger">Sil</button>
+				<a asp-action="Index" class="btn btn-secondary">İptal</a>
+			</form>
+		</div>
+	</div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+	<div class="alert alert-success" role="alert">
+		@TempData["SuccessMessage"]
+	</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+	<div class="alert alert-danger" role="alert">
+		@TempData["ErrorMessage"]
+	</div>
+}
+

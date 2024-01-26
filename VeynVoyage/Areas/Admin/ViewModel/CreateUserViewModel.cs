@@ -15,6 +15,6 @@ namespace VeynVoyage.Areas.Admin.ViewModel
 
         [Required]
         public string RoleName { get; set; }
-        public IEnumerable<SelectListItem> Roles { get; set; }
+        public IEnumerable<SelectListItem>? Roles { get; set; }
     }
 }
