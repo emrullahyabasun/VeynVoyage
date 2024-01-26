@@ -9,7 +9,7 @@
 }
 
 
-<section class="site-section bg-light">
+<div class="container mt-5">
 <form asp-action="EditUser">
     <input asp-for="Id" type="hidden" />
     <div class="form-group">
@@ -22,7 +22,7 @@
         <select asp-for="SelectedRoles" asp-items="Model.AvailableRoles" class="form-control" multiple="multiple"></select>
         <span asp-validation-for="SelectedRoles" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-success">Güncelle</button>
+    <button type="submit" class="btn btn-primary mb-3">Güncelle</button>
 </form>
 
     @if (TempData["SuccessMessage"] != null)
@@ -52,4 +52,4 @@
     }
 
 
-</section>
+</div>
