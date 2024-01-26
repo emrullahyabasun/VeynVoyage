@@ -3,24 +3,48 @@
 
 
 @model CreateUserViewModel
+@{
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
 
+<section class="site-section bg-light">
+	<div class="container">
+		<h1 class="mb-4">Kullanıcı Oluştur</h1>
+		<form asp-action="CreateUser">
+			<div class="form-group">
+				<label asp-for="Email" class="control-label"></label>
+				<input asp-for="Email" class="form-control" type="email" />
+				<span asp-validation-for="Email" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Password" class="control-label"></label>
+				<input asp-for="Password" class="form-control" type="password" />
+				<span asp-validation-for="Password" class="text-danger"></span>
+				<small class="form-text text-muted">
+					Şifre en az 6 karakter uzunluğunda olmalı ve bir büyük harf, bir küçük harf ve bir rakam içermelidir.
+				</small>
+			</div>
+			<div class="form-group">
+				<label asp-for="RoleName" class="control-label">Rol</label>
+				<select asp-for="RoleName" asp-items="Model.Roles" class="form-control"></select>
+				<span asp-validation-for="RoleName" class="text-danger"></span>
+			</div>
+			<button type="submit" class="btn btn-success">Kullanıcı Oluştur</button>
+		</form>
+		@if (TempData["SuccessMessage"] != null)
+		{
+			<div class="alert alert-success">
+				@TempData["SuccessMessage"]
+			</div>
+		}
 
+		@if (TempData["ErrorMessage"] != null)
+		{
+			<div class="alert alert-danger">
+				@TempData["ErrorMessage"]
+			</div>
+		}
 
-<form asp-action="CreateUser">
-    <div>
-        <label asp-for="Email"></label>
-        <input asp-for="Email" type="email" />
-        <span asp-validation-for="Email"></span>
-    </div>
-    <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" type="password" />
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div>
-        <label asp-for="RoleName">Rol</label>
-        <select asp-for="RoleName" asp-items="Model.Roles"></select>
-        <span asp-validation-for="RoleName"></span>
-    </div>
-    <button type="submit">Kullanıcı Oluştur</button>
-</form>
+	</div>
+
+</section>

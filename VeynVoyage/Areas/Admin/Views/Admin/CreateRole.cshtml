@@ -3,23 +3,24 @@
 
 @model CreateRoleViewModel
 
+@{
+
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
 
 
-<form asp-action="CreateRole">
 
-	<div>
-
-		<label asp-for="RoleName"></label>
-
-		<input asp-for="RoleName" />
-
-		<span asp-validation-for="RoleName"></span>
-
-	</div>
-
-	<button type="submit">Rol Oluştur</button>
-
-</form>
-	
-	
+<section class="site-section">
+    <div class="container">
+        <h1 class="mb-4">Rol Oluştur</h1>
+        <form asp-action="CreateRole">
+            <div class="form-group">
+                <label asp-for="RoleName" class="control-label"></label>
+                <input asp-for="RoleName" class="form-control" />
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Rol Oluştur</button>
+        </form>
+    </div>
+</section>
 

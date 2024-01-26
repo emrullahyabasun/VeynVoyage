@@ -1,0 +1,27 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using VeynVoyage.Areas.Admin.ViewModel;
+@model EditUserViewModel
+
+
+@{
+
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<section class="site-section bg-light">
+<form asp-action="EditUser">
+    <input asp-for="Id" type="hidden" />
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SelectedRoles">Roller</label>
+        <select asp-for="SelectedRoles" asp-items="Model.AvailableRoles" class="form-control" multiple="multiple"></select>
+        <span asp-validation-for="SelectedRoles" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Güncelle</button>
+</form>
+</section>

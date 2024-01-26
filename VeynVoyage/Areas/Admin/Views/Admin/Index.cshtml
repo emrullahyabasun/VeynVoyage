@@ -1,28 +1,64 @@
-﻿
-@model VeynVoyage.Areas.Admin.ViewModel.AdminDashboardViewModel
+﻿@model VeynVoyage.Areas.Admin.ViewModel.AdminDashboardViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-<h1>Admin Dashboard</h1>
 
-<h2>Kullanıcılar</h2>
-<!-- Kullanıcı listesi -->
-<table>
-    @foreach (var user in Model.Users)
-    {
-        <tr>
-            <td>@user.Email</td>
-            <!-- Diğer kullanıcı bilgileri ve işlemler -->
-        </tr>
-    }
-</table>
+@{
 
-<h2>Roller</h2>
-<!-- Rol listesi -->
-<table>
-    @foreach (var role in Model.Roles)
-    {
-        <tr>
-            <td>@role.Name</td>
-            <!-- Diğer rol bilgileri ve işlemler -->
-        </tr>
-    }
-</table>
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<section class="site-section bg-light">
+	<h1>Admin Dashboard</h1>
+	<div class="container">
+		<h2>Kullanıcılar</h2>
+
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Email</th>
+						<th>İşlemler</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var user in Model.Users)
+					{
+						<tr>
+							<td><strong>@user.Email</strong></td>
+							<td>
+								<a asp-action="EditUser" asp-route-id="@user.Id" class="btn btn-info btn-sm">Düzenle</a>
+								<a asp-action="DeleteUser" asp-route-id="@user.Id" class="btn btn-danger btn-sm">Sil</a>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+
+		<h2>Roller</h2>
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Rol Adı</th>
+						<th>İşlemler</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var role in Model.Roles)
+					{
+						<tr>
+							<td><strong> @role.Name</strong></td>
+							<td>
+								<!-- Rol düzenleme ve silme işlemleri için linkler -->
+								<a asp-action="EditRole" asp-route-id="@role.Id" class="btn btn-info btn-sm">Düzenle</a>
+								<a asp-action="DeleteRole" asp-route-id="@role.Id" class="btn btn-danger btn-sm">Sil</a>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>
