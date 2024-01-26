@@ -39,7 +39,7 @@ namespace VeynVoyage.Areas.Admin.Controllers
             var model = new AdminDashboardViewModel
             {
                 UsersWithRoles = usersWithRoles,
-                Roles = roles // Bu satırı eklemeyi unutmayın.
+                Roles = roles 
             };
 
             return View(model);
@@ -276,21 +276,21 @@ namespace VeynVoyage.Areas.Admin.Controllers
                 user.Email = model.Email;
                 user.UserName = model.Email;
 
-                // Kullanıcı bilgilerini güncelle
+                
                 var result = await _userManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
-                    // Mevcut rolleri sil
+                    
                     var currentRoles = await _userManager.GetRolesAsync(user);
                     result = await _userManager.RemoveFromRolesAsync(user, currentRoles);
                     if (!result.Succeeded)
                     {
-                        // Rolleri silme hatası
-                        // Hataları ModelState'e ekle
+                        
+                        
                         AddErrors(result);
                     }
 
-                    // Yeni rolleri ekle
+                   
                     result = await _userManager.AddToRolesAsync(user, model.SelectedRoles);
                     if (result.Succeeded)
                     {
@@ -298,15 +298,13 @@ namespace VeynVoyage.Areas.Admin.Controllers
                     }
                     else
                     {
-                        // Rolleri ekleme hatası
-                        // Hataları ModelState'e ekle
+                       
                         AddErrors(result);
                     }
                 }
                 else
                 {
-                    // Kullanıcı güncelleme hatası
-                    // Hataları ModelState'e ekle
+                   
                     AddErrors(result);
                 }
             }
@@ -349,7 +347,7 @@ namespace VeynVoyage.Areas.Admin.Controllers
             return View(model);
         }
 
-        // POST: Admin/DeleteUser
+        
         [HttpPost, ActionName("DeleteUser")]
         public async Task<IActionResult> DeleteUserConfirmed(string id)
         {
