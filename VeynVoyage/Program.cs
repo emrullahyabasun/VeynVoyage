@@ -18,13 +18,22 @@ namespace VeynVoyage
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+            builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+                            .AddEntityFrameworkStores<ApplicationDbContext>()
+                            .AddDefaultTokenProviders();
+
+
+
+
             builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
 
 
-         // kendi servislerim
-                builder.Services.AddScoped<IRoomService, RoomService>();
+
+            // kendi servislerim
+            builder.Services.AddScoped<IRoomService, RoomService>();
 
             var app = builder.Build();
 

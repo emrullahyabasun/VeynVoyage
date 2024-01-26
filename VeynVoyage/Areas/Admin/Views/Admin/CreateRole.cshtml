@@ -1,0 +1,25 @@
+﻿@using VeynVoyage.Areas.Admin.ViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model CreateRoleViewModel
+
+
+
+<form asp-action="CreateRole">
+
+	<div>
+
+		<label asp-for="RoleName"></label>
+
+		<input asp-for="RoleName" />
+
+		<span asp-validation-for="RoleName"></span>
+
+	</div>
+
+	<button type="submit">Rol Oluştur</button>
+
+</form>
+	
+	
+

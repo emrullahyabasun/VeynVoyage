@@ -1,0 +1,28 @@
+﻿
+@model VeynVoyage.Areas.Admin.ViewModel.AdminDashboardViewModel
+
+<h1>Admin Dashboard</h1>
+
+<h2>Kullanıcılar</h2>
+<!-- Kullanıcı listesi -->
+<table>
+    @foreach (var user in Model.Users)
+    {
+        <tr>
+            <td>@user.Email</td>
+            <!-- Diğer kullanıcı bilgileri ve işlemler -->
+        </tr>
+    }
+</table>
+
+<h2>Roller</h2>
+<!-- Rol listesi -->
+<table>
+    @foreach (var role in Model.Roles)
+    {
+        <tr>
+            <td>@role.Name</td>
+            <!-- Diğer rol bilgileri ve işlemler -->
+        </tr>
+    }
+</table>
