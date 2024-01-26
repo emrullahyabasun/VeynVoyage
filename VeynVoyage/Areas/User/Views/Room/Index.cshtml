@@ -1,4 +1,6 @@
-﻿@model IEnumerable<VeynVoyage.Models.Room>
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model IEnumerable<VeynVoyage.Models.Room>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -38,7 +40,8 @@
                                 <li><span class="ion-ios-crop"></span> @room.Space m <sup>2</sup></li>
                             </ul>
                             <p>@room.Description</p>
-                            <p><a href="#" class="btn btn-primary btn-sm"> @room.Price &#8378; Rezerve et!</a></p>
+                            <p><a asp-action="Reserve" asp-route-id="@room.Id" class="btn btn-primary btn-sm">@room.Price &#8378; Rezerve et!</a></p>
+
                         </div>
                 </div>
             </div>

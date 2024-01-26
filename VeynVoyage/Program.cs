@@ -28,7 +28,7 @@ namespace VeynVoyage
 
 
 
-
+            builder.Services.AddSession();  
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
 
@@ -56,6 +56,8 @@ namespace VeynVoyage
 
             app.UseRouting();
 
+
+            app.UseSession();   
             app.UseAuthentication();
             app.UseAuthorization();
 

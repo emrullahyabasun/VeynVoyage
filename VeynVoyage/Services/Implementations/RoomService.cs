@@ -15,5 +15,12 @@ namespace VeynVoyage.Services.Implementations
         {
             return _context.Rooms.ToList();
         }
+
+        public Room GetRoomById(int id)
+        {
+            return _context.Rooms.FirstOrDefault(x => x.Id == id);
+        }
+
+       
     }
 }

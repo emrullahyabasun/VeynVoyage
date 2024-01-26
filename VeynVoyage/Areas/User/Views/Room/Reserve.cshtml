@@ -1,0 +1,32 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+
+@model VeynVoyage.Areas.User.ViewModels.ReservationViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container my-5">
+    <input name="imageUrl" id="imageUrl" type="text" class="d-none" value="@Model.ImageUrl" />
+    <input type="hidden" name="roompriceperday" value="@Model.Price" />
+
+
+    <h2>@Model.RoomName Rezervasyonu</h2>
+    <form action="Reserve" method="post">
+        <input type="hidden" name="roomId" id="roomId" value="@Model.RoomId" @* asp-for="RoomId" *@ />
+        <div class="mb-3">
+            <label asp-for="CheckInDate" class="form-label"></label>
+            <input @* asp-for="CheckInDate" *@ name="checkinDate" id="checkinDate"  class="form-control" type="date" />
+            <span asp-validation-for="CheckInDate" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="CheckOutDate" class="form-label"></label>
+            <input @* asp-for="CheckOutDate" *@ name="checkoutDate" id="checkoutDate" class="form-control" type="date" />
+            <span asp-validation-for="CheckOutDate" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Rezervasyonu Onayla</button>
+        </div>
+    </form>
+</div>
